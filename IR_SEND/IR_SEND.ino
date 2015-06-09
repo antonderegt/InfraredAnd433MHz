@@ -11,13 +11,15 @@ void setup() {
   pinMode(IRledPin, OUTPUT);  
   pinMode(13, OUTPUT);    
  
-  Serial.begin(9600);
+ // Serial.begin(9600);
   
 //  Serial.println("setup");
   // Initialise the IO and ISR
-  vw_set_ptt_inverted(true);  // Required for DR3100
+  //vw_set_ptt_inverted(true);  // Required for DR3100
   vw_setup(2000);	      // Bits per sec
   vw_rx_start();              // Start the receiver PLL running
+  
+  TurnLedStripOn();
 }
  
 void loop() { 
@@ -34,16 +36,32 @@ void loop() {
   if (vw_get_message(buf, &buflen)) { // Non-blocking
     switch (buflen){
       case 2:
+        vw_rx_stop();
         TurnLedStripOn();
+        vw_rx_start();
         break;
       case 3:
+        vw_rx_stop();
         TurnLedStripOff();
+        vw_rx_start();
         break;
       case 13:
+        vw_rx_stop();
         BrightnessMin();
+        BrightnessMin();
+        BrightnessMin();
+        BrightnessMin();
+        BrightnessMin();
+        vw_rx_start();
         break;
       case 14:
+        vw_rx_stop();
         BrightnessPlus();
+        BrightnessPlus();
+        BrightnessPlus();
+        BrightnessPlus();
+        BrightnessPlus();
+        vw_rx_start();
         break;
       }
       
