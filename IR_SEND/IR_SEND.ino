@@ -11,11 +11,6 @@ void setup() {
   pinMode(IRledPin, OUTPUT);  
   pinMode(13, OUTPUT);    
  
- // Serial.begin(9600);
-  
-//  Serial.println("setup");
-  // Initialise the IO and ISR
-  //vw_set_ptt_inverted(true);  // Required for DR3100
   vw_setup(2000);	      // Bits per sec
   vw_rx_start();              // Start the receiver PLL running
   
@@ -64,17 +59,6 @@ void loop() {
         vw_rx_start();
         break;
       }
-      
-      /*
-      int i;
-      // Message with a good checksum received, dump it.
-      Serial.print("Got: ");
-
-      for (i = 0; i < buflen; i++){
-	Serial.print((char)buf[i]);
-      }
-      Serial.println("");
-      */
     }
 }
  
