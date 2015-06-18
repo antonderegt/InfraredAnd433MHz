@@ -29,21 +29,19 @@ void loop() {
   uint8_t buflen = VW_MAX_MESSAGE_LEN;
   
   if (vw_get_message(buf, &buflen)) { // Non-blocking
+    flashLed();
     switch (buflen){
       case 2:
-        flashLed();
         vw_rx_stop();
         TurnLedStripOn();
         vw_rx_start();
         break;
       case 3:
-        flashLed();
         vw_rx_stop();
         TurnLedStripOff();
         vw_rx_start();
         break;
       case 13:
-        flashLed();
         vw_rx_stop();
         BrightnessMin();
         BrightnessMin();
@@ -53,7 +51,6 @@ void loop() {
         vw_rx_start();
         break;
       case 14:
-        flashLed();
         vw_rx_stop();
         BrightnessPlus();
         BrightnessPlus();
@@ -68,15 +65,15 @@ void loop() {
 
 void flashLed(){
   digitalWrite(13, HIGH);
-  delay(100);
+  delay(80);
   digitalWrite(13, LOW);
-  delay(100);
+  delay(80);
   digitalWrite(13, HIGH);
-  delay(100);
+  delay(80);
   digitalWrite(13, LOW);
-  delay(100);
+  delay(80);
   digitalWrite(13, HIGH);
-  delay(100);
+  delay(80);
   digitalWrite(13, LOW);
 }
  
