@@ -34,10 +34,14 @@ void loop() {
       case 2:
         vw_rx_stop();
         TurnLedStripOn();
+        TurnLedStripOn();
+        TurnLedStripOn();
         vw_rx_start();
         break;
       case 3:
         vw_rx_stop();
+        TurnLedStripOff();
+        TurnLedStripOff();
         TurnLedStripOff();
         vw_rx_start();
         break;
@@ -65,15 +69,15 @@ void loop() {
 
 void flashLed(){
   digitalWrite(13, HIGH);
-  delay(80);
+  delay(50);
   digitalWrite(13, LOW);
-  delay(80);
+  delay(50);
   digitalWrite(13, HIGH);
-  delay(80);
+  delay(50);
   digitalWrite(13, LOW);
-  delay(80);
+  delay(50);
   digitalWrite(13, HIGH);
-  delay(80);
+  delay(50);
   digitalWrite(13, LOW);
 }
  
